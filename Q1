@@ -1,0 +1,29 @@
+include <stdio.h>
+#include <stdlib.h>
+
+#define INITIAL_PACKETS 10
+
+int main() {
+    // Initial allocation of memory for 10 packets
+    int* packets = (int*) malloc(INITIAL_PACKETS * sizeof(int));
+
+    // Monitor inventory size and dynamically reallocate memory as needed
+    while (1) {
+        int current_packets = get_current_inventory_size(); // assume this function returns the current inventory size
+        if (current_packets > INITIAL_PACKETS) {
+            // Reallocate memory to accommodate more packets
+            packets = (int*) realloc(packets, current_packets * sizeof(int));
+        } else if (current_packets < INITIAL_PACKETS) {
+            // Reallocate memory to reduce waste
+            packets = (int*) realloc(packets, current_packets * sizeof(int));
+        }
+        // Use the allocated memory to store packets
+        for (int i = 0; i < current_packets; i++) {
+            packets[i] = i; // assume this is how packets are stored
+        }
+    }
+
+    // Don't forget to free the allocated memory when done
+    free(packets);
+    return 0;
+}
