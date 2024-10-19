@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_STUDENTS 10  // maximum number of students
+#define MAX_NAME_LENGTH 20  // maximum length of a student's name
+
+int main() {
+    char studentList[MAX_STUDENTS][MAX_NAME_LENGTH];  // array to store student names
+    int numStudents = 0;  // number of students who have submitted their assignments
+
+    // function to add a new student to the list
+    void addStudent(char *name) {
+        if (numStudents < MAX_STUDENTS) {
+            strcpy(studentList[numStudents], name);
+            numStudents++;
+        } else {
+            printf("Error: Maximum number of students reached.\n");
+        }
+    }
+
+    // demonstrate adding students to the list
+    addStudent("John Doe");
+    addStudent("Jane Smith");
+    addStudent("Bob Johnson");
+
+    // print the list of students
+    printf("List of students who have submitted their assignments:\n");
+    for (int i = 0; i < numStudents; i++) {
+        printf("%s\n", studentList[i]);
+    }
+
+    return 0;
+}
