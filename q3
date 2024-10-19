@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+// Base struct: Shape
+typedef struct {
+    char type[10]; // to store the type of shape (e.g., "Square" or "Rectangle")
+} Shape;
+
+// Derived struct: Square
+typedef struct {
+    Shape shape; // inherit from Shape
+    float area;
+} Square;
+
+// Derived struct: Rectangle
+typedef struct {
+    Shape shape; // inherit from Shape
+    float length;
+    float breadth;
+} Rectangle;
+
+int main() {
+    // Create a Square object
+    Square square;
+    square.shape.type[0] = 'S'; // set type to "Square"
+    square.area = 16.0; // set area
+    printf("Square area: %f\n", square.area);
+
+    // Create a Rectangle object
+    Rectangle rectangle;
+    rectangle.shape.type[0] = 'R'; // set type to "Rectangle"
+    rectangle.length = 4.0; // set length
+    rectangle.breadth = 5.0; // set breadth
+    printf("Rectangle length: %f, breadth: %f\n", rectangle.length, rectangle.breadth);
+
+    return 0;
+}
