@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+#define MAX_BOOKS 100 // maximum number of books in the library
+
+int main() {
+    int bookList[MAX_BOOKS]; // ordered list of book IDs
+    int numBooks = 0; // number of books in the list
+
+    // populate the book list (you can add more books as needed)
+    bookList[numBooks++] = 101;
+    bookList[numBooks++] = 102;
+    bookList[numBooks++] = 103;
+    bookList[numBooks++] = 104;
+    bookList[numBooks++] = 105;
+
+    int searchID; // book ID to search for
+    printf("Enter the book ID to search for: ");
+    scanf("%d", &searchID);
+
+    int found = 0; // flag to indicate if the book is found
+    for (int i = 0; i < numBooks; i++) {
+        if (bookList[i] == searchID) {
+            found = 1;
+            break;
+        }
+    }
+
+    if (found) {
+        printf("Book with ID %d is available in the library.\n", searchID);
+    } else {
+        printf("Book with ID %d is not available in the library.\n", searchID);
+    }
+
+    return 0;
+}
